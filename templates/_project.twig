@@ -7,7 +7,7 @@
 {% block content %}
   {% for block in entry.body.level(1) %}
     {% if isAjax %}
-      {% if block.type.handle == "projectHero" %}
+      {% if block.type.handle == "card" %}
       {% else %}
         {% include '_blocks/' ~ block.type.handle with {block: block} only %}
       {% endif %}

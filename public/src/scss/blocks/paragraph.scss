@@ -1,0 +1,16 @@
+.paragraph {
+  background: #fff;
+  padding: 20px 15px;
+  p {
+    color: #99aab5;
+    letter-spacing: -1.3px;
+    font-size: 20px;
+    line-height: 27px;
+    margin-bottom: 20px;
+    font-weight: normal;
+    strong {
+      color: rgba(72,89,100,1);
+      font-weight: bolder;
+    }
+  }
+}

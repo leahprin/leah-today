@@ -9,6 +9,9 @@ if (!defined('CRAFT_ENVIRONMENT'))
 
 // Path to your craft/ folder
 $craftPath = '../craft';
+define('CRAFT_TEMPLATES_PATH', '../templates/');
+
+
 
 // Do not edit below this line
 $path = rtrim($craftPath, '/').'/app/index.php';

@@ -57,12 +57,14 @@ gulp.task('serve', function() {
 
     browserSync.init({
         proxy: 'leah.dev',
+        files: ["templates/**", "public/src/js/**"],
         notify: {
             styles: {
                 top: 'auto',
                 bottom: '0'
             }
-        }
+        },
+
     });
 
 })

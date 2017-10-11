@@ -3,10 +3,15 @@
 @import "other/mixins";
 @import "other/fonts";
 @import "pages/home";
-@import "sections/header";
+// @import "sections/header";
+@import "blocks/header";
+@import "blocks/headline";
+@import "blocks/card";
+@import "blocks/paragraph";
+
 @import "sections/hero";
 @import "elements/buttons";
-@import "elements/project";
+// @import "elements/project";
 
 
 
@@ -26,17 +31,17 @@ body {
   font-size: 16px;
   line-height: 16px;
   transition: 0.3s;
-  &:before {
-    // Gradient overlay
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 250px;
-    height: 300px;
-    width: 100%;
-    background-image: radial-gradient(ellipse farthest-corner at center bottom,rgb(35, 38, 83) 0%,rgba(35, 38, 83, 0) 60%);
-  }
+  // &:before {
+  //   // Gradient overlay
+  //   content: '';
+  //   display: block;
+  //   position: absolute;
+  //   left: 0;
+  //   top: 250px;
+  //   height: 300px;
+  //   width: 100%;
+  //   background-image: radial-gradient(ellipse farthest-corner at center bottom,rgb(35, 38, 83) 0%,rgba(35, 38, 83, 0) 60%);
+  // }
 }
 
 * {
@@ -49,56 +54,62 @@ body {
 //   padding: 15px;
 // }
 
-
-.lightTheme {
-
-    background: rgba(251,252,254,100);
-    &:before {
-      background-image: radial-gradient(ellipse farthest-corner at center bottom,rgb(201, 209, 227) 0%,rgba(201, 209, 227, 0) 60%);
-    }
-
-  header {
-    border-color: rgba(238, 244, 255, 1.0);
-  }
-  h1 {
-    color: $lightTheme-text;
-  }
-  button.round {
-    &.outline {
-      background: rgba(255,255,255,0.3);
-    }
-  }
-  .projectHero {
-    background: #fff;
-    color: rgba(0,0,0,0.8);
-
-  }
-
-}
-
-
-
-header {
-  border-top: 3px solid rgba(168, 107, 236, 0.5);
-  padding: 15px;
-  display: none;
-  @include desktop {
-    display: block;
-  }
-  a {
-    color: rgba(174,162,200,100);
-    text-decoration: none;
-    font-size: 0.938em;
-    display: inline-flex;
-    align-self: center;
-    position: relative;
-    line-height: 20px;
-    font-weight: 400;
-    svg {
-      margin-right: 7px;
-    }
+section {
+  padding: 0 20px;
+  & > section, &.projects {
+    padding: 0;
   }
 }
+//
+// .lightTheme {
+//
+//     background: rgba(251,252,254,100);
+//     &:before {
+//       background-image: radial-gradient(ellipse farthest-corner at center bottom,rgb(201, 209, 227) 0%,rgba(201, 209, 227, 0) 60%);
+//     }
+//
+//   header {
+//     border-color: rgba(238, 244, 255, 1.0);
+//   }
+//   h1 {
+//     color: $lightTheme-text;
+//   }
+//   button.round {
+//     &.outline {
+//       background: rgba(255,255,255,0.3);
+//     }
+//   }
+//   .projectHero {
+//     background: #fff;
+//     color: rgba(0,0,0,0.8);
+//
+//   }
+//
+// }
+
+
+
+// header {
+//   border-top: 3px solid rgba(168, 107, 236, 0.5);
+//   padding: 15px;
+//   display: none;
+//   @include desktop {
+//     display: block;
+//   }
+//   a {
+//     color: rgba(174,162,200,100);
+//     text-decoration: none;
+//     font-size: 0.938em;
+//     display: inline-flex;
+//     align-self: center;
+//     position: relative;
+//     line-height: 20px;
+//     font-weight: 400;
+//     svg {
+//       margin-right: 7px;
+//     }
+//   }
+// }
 
 
 .shadow {

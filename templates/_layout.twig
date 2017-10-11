@@ -23,13 +23,11 @@
 
 
   </head>
-  <body class="preload darkTheme">
+  <body>
     <div id="app">
       {% include '_partials/header' %}
-      <main class="js-main {{entry.type.handle}} {% if entry.type.handle == "project" %}show{% endif %}" role="main">
+      <main class="{{entry.type.handle}} {% if entry.type.handle == "project" %}show{% endif %}" role="main">
   			{% block content %}
-  				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-  				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
   			{% endblock %}
 		  </main>
     </div>

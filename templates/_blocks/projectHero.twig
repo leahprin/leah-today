@@ -1,6 +1,7 @@
 {% block content %}
 
-  <section class="projectHero">
+<h1>refactoring to card.twig</h1>
+  {# <section class="projectHero">
     <a class="close" href="/" {% if craft.request.getSegment(1) != "projects" %}ic-action="hideProject"{% endif %}>{{ craft.inlin.er('/media/icons/x.svg') | raw }}</a>
 
     {% import '_macros/picture' as picture %}
@@ -31,6 +32,6 @@
   </section>
   <section class="projectIntro">
     {{block.paragraph}}
-  </section>
+  </section> #}
 
 {% endblock %}

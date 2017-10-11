@@ -1,0 +1,15 @@
+{% block content %}
+<section class="projects">
+  {% set projects = block.projects %}
+
+  {% if projects | length %}
+    {% for project in projects %}
+      {% for block in project.body.project.card.limit(1) %}
+          {% include '_blocks/card'  with {block: block} only %}
+      {% endfor %}
+
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+
+        {# <div class="project" ic-post-to="/{{project.uri}}" ic-target="#{{project.slug}}Detail" ic-push-url="true" ic-action="showProject"></div> #}
