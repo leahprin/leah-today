@@ -1,0 +1,46 @@
+
+
+  {% macro card(img, options) %}
+    {% set defaults = {
+      allowUpscale: false,
+      alt: '',
+      background: false,
+      class: false,
+      format: 'jpg',
+      interlace: true,
+      lazy: true,
+      mode: 'crop',
+      objectFit: false,
+      objectFitValue: 'cover',
+      openDiv: false,
+      position: false,
+      quality: 85,
+      ratio: false,
+      dataSizes: 'auto',
+
+    } %}
+
+    {# Merge our two arrays together #}
+    {# {% set allOptions = defaults|merge(options) %}
+    {% set image = options.img %} #}
+
+    {% set options = options ? defaults|merge(options) : defaults %}
+
+
+    <h1>{{img.url}}</h1>
+    <h2></h2>
+    {# {% set images = craft.imager.transformImage(img, options) %} #}
+
+    {# {{ craft.imager.transformImage(image, { allOptions }) }} #}
+
+      {# {% if attributes.url %}<a href="{{ attributes.url }}">{% endif %}
+        <div class="card card--{{ attributes.scheme }} card--{{ attributes.size }}">
+          {% if attributes.img %}<img src="{{ attributes.img }}">{% endif %}
+          <h2>{{ attributes.title }}</h2>
+          {{ attributes.content }}
+        </div>
+      {% if attributes.url %}</a>{% endif %} #}
+  {% endmacro %}
+
+
+      {# position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%', #}

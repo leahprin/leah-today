@@ -1,0 +1,16 @@
+{% block content %}
+  <section class="hero">
+    <video muted playsinline loop poster="/media/portrait.jpg" autoplay>
+      <source src="/media/portrait.mp4" type="video/mp4">
+    </video>
+
+
+    <h1>{{ block.headlineMobile }}</h1>
+    {# <h1>{{ block.headlineDesktop }}</h1> #}
+    <button class="round">{{ craft.inlin.er('/media/icons/envelope.svg') | raw }} Email</button>
+    <button class="round outline">{{ craft.inlin.er('/media/icons/bubble.svg') | raw }} iMessage</button>
+
+  </section>
+
+
+{% endblock %}

@@ -1,0 +1,189 @@
+{#
+// lazyLoaded Image/bgImages, optimized with Imager and Focuspoint
+---------------------------------------------------------------------------
+https://github.com/aelvan/Imager-Craft
+https://github.com/smcyr/Craft-FocusPoint
+for the bgImage intrinsic ratio classname creation check:
+https://github.com/inuitcss/inuitcss/blob/develop/objects/_objects.ratio.scss (modified in this revision to use a utility class prefix, , e.g; .u_ratio. @nternetinspired)
+https://github.com/constancecchen/object-fit-polyfill
+1. import marco in your template:
+  {% import '_macros/_lazyFocusImager' as macroLazyFocusImager %}
+2. set image to run through macro e.g.:
+  {% set image = block.image.first() %}
+3. set options in template, or pass without options for defaults:
+  {% set options = {
+    sizes: [                --> set responsive image widths created by imager for lazySizes
+      { width: 1024 },      --> defaults based on http://gs.statcounter.com/screen-resolution-stats
+      { width: 768 },
+    ],
+    allowUpscale: false,    --> set imager setting allowUpscale - default is false
+    alt: 'logo',            --> set image alt tag, you could also use a twig variable if alt tag is set in CP - default is false
+    background: false,      --> set to true for bgImage element - default is false
+    class: 'o-media',       --> class name of img/bg element - default is o-media
+    format: 'jpg',          --> forces output format to a specific type - default is jpg
+    interlace: true,        --> set imager setting interlace - default is true
+    lazy: true,             --> use lazySizes - default is true
+    mode: 'crop',           --> set mode 'crop', 'fit', 'stretch', 'croponly', 'letterbox' - default is crop
+    openDiv: false,         --> don't enclose the bgImage within a div element, useful adding background images directly to existing elements - default is false
+    position: '50% 50%',    --> position for bgImage / if a focusPoint for cropping is set, it will use it for positioning - default is false
+    quality: 80,            --> set image quality - default is 80
+    ratio: 16:9,            --> set image ratio for cropping and sets a intrinsic ratio classname for bgImages - default is false
+  } %}
+ 4. execute macro in template:
+  {{ macroLazyFocusImager.LazyFocusImager(image, options) }}
+#}
+
+{# Macro #}
+{% macro LazyFocusImager(image,options) %}
+
+  {# Set Defaults #}
+  {% set defaults = {
+    sizes: [
+      { width: 1920 },
+      { width: 1600 },
+      { width: 1366 },
+      { width: 1024 },
+      { width: 768 },
+      { width: 360 },
+    ],
+    allowUpscale: false,
+    alt: '',
+    background: false,
+    class: false,
+    format: 'jpg',
+    interlace: true,
+    lazy: true,
+    mode: 'crop',
+    objectFit: false,
+    objectFitValue: 'cover',
+    openDiv: false,
+    position: false,
+    quality: 85,
+    ratio: false,
+    dataSizes: 'auto',
+    }
+  %}
+
+  {# Merge Attr with Defaults #}
+  {% set options = options ? defaults|merge(options) : defaults %}
+
+  {% if image %}
+
+    {# Set Ratio #}
+      {% if options.ratio %}
+        {% set base64Ratio = options.ratio|split(':') %}
+        {% set ratio = options.ratio ? options.ratio|replace({":": "/"}) : '' %}
+      {% else %}
+        {% set imageSize = (image.width/100) ~ ':' ~ (image.height/100) %}
+        {% set base64Ratio = imageSize|split(':') %}
+        {% set ratio = imageSize ? imageSize|replace({":": "/"}) : '' %}
+      {% endif %}
+
+    {# Set Position #}
+      {# {% if options.position %}
+        {% set position = options.position %} #}
+      {% if image.focusPctX %}
+        {% set position = image.focusPctX ~ '% ' ~ image.focusPctY ~ '%' %}
+      {# {% else %}
+        {% set position = '50% 50%' %} #}
+      {% endif %}
+
+    {# Define global variables #}
+      {% set imageSettings = {
+        allowUpscale: options.allowUpscale,
+        format: options.format,
+        interlace: options.interlace,
+        jpegQuality: options.quality,
+        mode: options.mode,
+        position: position,
+        ratio: ratio,
+      } %}
+
+      {% set imageSettingsWebp = {
+        allowUpscale: options.allowUpscale,
+        format: 'webp',
+        interlace: options.interlace,
+        webpQuality: options.quality,
+        mode: options.mode,
+        position: position,
+        ratio: ratio,
+      } %}
+
+    {# Setup Image Transforms #}
+      {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
+
+      {# If the server has support for WebP, create transforms #}
+        {% if craft.imager.serverSupportsWebp() %}
+          {% set imagesWebp = craft.imager.transformImage(image, options.sizes, imageSettingsWebp) %}
+        {% endif %}
+
+    {# Background Image #}
+      {% if options.background %}
+        {% if not options.openDiv %}
+        <div>
+        {% endif %}
+          class="{{ options.class }} {{ options.ratio ? 'u_ratio  u_ratio--' ~ options.ratio|replace({":": "-"}) : '' }}{% if options.lazy %} lazyload{% endif %}"
+            style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');background-position: {{ position|trim("'") }}; background-size: cover;"
+          {% if options.lazy %}
+            data-{% endif %}bgset="{{ craft.imager.srcset(images) }}"
+          {% if options.lazy %}
+            data-{% endif %}sizes="{{ options.dataSizes }}">
+        {% if not options.openDiv %}
+        </div>
+        {% endif %}
+
+    {# LazyLoaded Image #}
+      {% elseif options.lazy %}
+        <picture>
+          {% if craft.imager.serverSupportsWebp() %}
+            <source data-sizes="{{ options.dataSizes }}" data-srcset="{{ craft.imager.srcset(imagesWebp) }}" type="image/webp">
+          {% endif %}
+            <img class="{{ options.class }} lazyload"
+                 src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
+                 data-sizes="{{ options.dataSizes }}"
+                 data-srcset="{{ craft.imager.srcset(images) }}"
+                 alt="{{ options.alt }}"
+                {% if options.objectFit %}
+                 style="object-fit:{{ options.objectFitValue }};object-position:{{position|trim("'")}};font-family:'object-fit:{{ options.objectFitValue }};object-position:{{position|trim("'")}};'"
+                 height="100%" width="100%"
+                {% endif %}
+                {% if not options.objectFit %}
+                 height="auto" width="100%"
+                {% endif %}
+                />
+        </picture>
+
+    {# objectFit Image #}
+      {% elseif options.objectFit %}
+        <picture>
+          {% if craft.imager.serverSupportsWebp() %}
+            <source sizes="{{ options.dataSizes }}" srcset="{{ craft.imager.srcset(imagesWebp) }}" type="image/webp">
+          {% endif %}
+            <img class="{{ options.class }} js-img-fit--not-lazy"
+                 src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
+                 sizes="{{ options.dataSizes }}"
+                 srcset="{{ craft.imager.srcset(images) }}"
+                 data-object-fit="{{ options.objectFitValue }}"
+                 data-object-position="{{ position|trim("'") }}"
+                 alt="{{ options.alt }}"
+                 style="object-fit:{{ options.objectFitValue }};object-position:{{position|trim("'")}};"
+                 height="100%" width="100%" />
+        </picture>
+
+      {# normal Image #}
+        {% else %}
+          <picture>
+            {% if craft.imager.serverSupportsWebp() %}
+              <source sizes="{{ options.dataSizes }}" srcset="{{ craft.imager.srcset(imagesWebp) }}" type="image/webp">
+            {% endif %}
+              <img class="{{ options.class }}"
+                   src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
+                   sizes="{{ options.dataSizes }}"
+                   srcset="{{ craft.imager.srcset(images) }}"
+                   alt="{{ options.alt }}"
+                   height="auto" width="100%" />
+          </picture>
+        {% endif %}
+
+  {% endif %}
+{% endmacro %}

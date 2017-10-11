@@ -1,0 +1,84 @@
+header {
+  &.offset {
+    margin-top: -55px;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+  // & + main.project {
+  //   display: none;
+  // }
+}
+
+.themeToggle {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  display: inline-flex;
+  align-self: center;
+  button {
+    position: relative;
+    &.sun {
+      top: -2px;
+      margin-right: 6px;
+      width: 21px;
+      height: 21px;
+      g {
+        transition: none;
+      }
+    }
+    &.moon {
+      top: 1px;
+      margin-left: 7px;
+      width: 15px;
+      height: 15px;
+      path {
+        transition: none;
+      }
+    }
+  }
+}
+
+.toggle {
+  width: 40px;
+  height: 17px;
+  background-color: #454769;
+  box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.59);
+  border-radius: 34px;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  .position {
+    display: inline-block;
+    background: #A86BEC;
+    height: 17px;
+    width: 17px;
+    position: absolute;
+    right: 1px;
+    bottom: 0;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.38);
+    transition: 1s;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+}
+
+.lightTheme {
+  .toggle .position {
+    transform: translate(-24px, 0);
+  }
+  .sun g {
+    fill: #F5A623;
+  }
+  .moon path {
+    fill: #5A5B75;
+  }
+}
+
+// .fade-enter-active, .fade-leave-active {
+//   transition: opacity .5s
+// }
+// .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+//   opacity: 0
+// }

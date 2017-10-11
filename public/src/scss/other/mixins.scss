@@ -1,0 +1,11 @@
+@mixin landscape {
+  @media all and (orientation:landscape) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width : 1200px) {
+    @content;
+  }
+}

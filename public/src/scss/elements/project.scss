@@ -1,0 +1,240 @@
+.projects {
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  max-width: 100%;
+  @include landscape {
+    max-width: 1200px;
+  }
+  @include desktop {
+    margin-top: 80px;
+  }
+}
+
+main.project {
+  padding: 0;
+  .projectHero {
+    border-radius: 0;
+    margin-bottom: -2px; // refactor - what's causing this?
+  }
+}
+
+.project {
+  display: block;
+  padding: 7.5px 15px;
+
+  position: relative;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+
+  .projectIntro {
+    display: none;
+    position: relative;
+    z-index: 2;
+    margin-top: -3px; // not sure what's causing this. Temp fix.
+
+    p {
+      opacity: 0;
+      // transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      // transition-delay: 2s;
+    }
+  }
+  &.show {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    z-index: 99999;
+    .projectIntro {
+      display: block;
+      opacity: 1;
+      p {
+
+        opacity: 1;
+      }
+    }
+    .close {
+      display: inline-flex;
+    }
+    .projectHero {
+      border-radius: 0;
+      picture img {
+        opacity: 1;
+      }
+
+      .icon {
+        // width: 40px;
+        // left: 20px;
+        // right: auto;
+        filter: drop-shadow( 0px 0px 20px rgba(0,0,0,0.4) );
+        // display: none;
+      }
+      .text {
+        // top: auto;
+        // bottom: 15px;
+        // left: auto;
+        // right: 15px;
+
+        // h2 {
+        //   display: inline;
+        //   font-size: 40px;
+        //   line-height: 40px;
+        //   position: relative;
+        //   top: 4px;
+        //   filter: drop-shadow( 2px 2px 0px rgba(0,0,0,0.1) );
+        // }
+        // h2, p {
+        //   display: none;
+        // }
+      }
+
+    }
+  }
+  &.hidden {
+    opacity: 0;
+    display: none;
+  }
+}
+
+
+
+.projectHero {
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  background: $darkTheme-bg;
+  z-index: 1;
+
+  cursor: pointer;
+
+  .close {
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 13px;
+    }
+  }
+
+  picture img {
+    width: 100%;
+    opacity: 0.8;
+    z-index: 0;
+  }
+  .icon, .text {
+    left: 15px;
+  }
+  .icon {
+    position: absolute;
+    top: 20px;
+    z-index: 2;
+  }
+
+  .text {
+    position: absolute;
+    bottom: 20px;
+
+    // background: rgba(0,0,0,0.6);
+    // width: 100%;
+    // height: 100px;
+    // padding-top: 20px;
+    // padding-left: 20px;
+    //app icon
+    // .icon {
+    //   margin-bottom: 15px;
+    //   width: 60px;
+    //   // filter: drop-shadow( 0px 0px 6px rgba(0,0,0,0.1) );
+    // }
+    max-width: 130px;
+
+
+    filter: drop-shadow( 0px 0px 10px rgba(0,0,0,0.6) );
+
+  }
+
+  h2 {
+    font-size: 3.125em;
+    line-height: 40px;
+    margin-left: -2px;
+  }
+  p {
+    opacity: 0.9;
+    font-size: 16px;
+    margin-top: 0px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 18px;
+
+    // position: absolute;
+    // bottom: 15px;
+    // left: 15px;
+  }
+
+}
+// @include landscape {
+//   .projectHero {
+//   max-width: 1024px;
+//   }
+// }
+
+
+.projectIntro {
+  background: #fff;
+  padding: 20px 15px;
+  opacity: 0;
+  max-width: 100%;
+  p {
+    color: rgba(153,170,181,1);
+    letter-spacing: -1.3px;
+    font-size: 20px;
+    line-height: 27px;
+    margin-bottom: 20px;
+    font-weight: normal;
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-delay: 2s;
+    opacity: 0;
+    strong {
+      color: rgba(72,89,100,1);
+      font-weight: bolder;
+    }
+  }
+}
+
+@include desktop {
+  .project {
+    margin-bottom: 30px;
+  }
+  .projectHero {
+    max-width: 1400px;
+    .icon, .project {
+      left: 20px;
+    }
+    .text {
+      filter: none;
+      max-width: none;
+      p {
+        font-weight: normal;
+      }
+    }
+    picture img {
+      opacity: 1;
+    }
+    &:hover {
+      transform: scale(0.98,0.98);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{% block content %}
+
+  <section class="projectHero">
+    <a class="close" href="/" {% if craft.request.getSegment(1) != "projects" %}ic-action="hideProject"{% endif %}>{{ craft.inlin.er('/media/icons/x.svg') | raw }}</a>
+
+    {% import '_macros/picture' as picture %}
+    {% set images = block.images.limit(1) %}
+    {% for image in images %}
+      <picture>
+        <!--[if IE 9]><video style="display: none;"><![endif]-->
+          <source class="lazyload" media="(min-width: 768px)" data-srcset="
+            {{ picture.transform(image,{width: 1440, height: 730, quality: 99})}} 1x">
+          <source class="lazyload" media="(min-width: 415px)" data-srcset="
+            {{ picture.transform(image,{width: 1024})}} 1x,
+            {{ picture.transform(image,{width: 2048}) }} 2x">
+          <source class="lazyload" data-srcset="
+            {{ picture.transform(image,{width: 290, height: 330}) }} 1x,
+            {{ picture.transform(image,{width: 580, height: 660}) }} 2x">
+        <!--[if IE 9]></video><![endif]-->
+          <img
+            data-srcset="http://placehold.it/640x480&text=default-1x"
+            class="lazyload">
+      </picture>
+    {% endfor %}
+    {% set icon = block.icon.first() %}
+    <img src="{{ icon ? icon.url }}" alt="{{ block.projectTitle }} icon" class="icon">
+    <div class="text">
+      <h2>{{ block.projectTitle }}</h2>
+      <p>{{ block.projectHeadline }}</p>
+    </div>
+  </section>
+  <section class="projectIntro">
+    {{block.paragraph}}
+  </section>
+
+{% endblock %}

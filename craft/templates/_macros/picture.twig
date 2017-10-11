@@ -1,0 +1,20 @@
+
+
+{% macro transform(img, options) %}
+{% spaceless %}
+  {% set defaults = {
+    format: 'jpg',
+    mode: 'crop',
+    jpegQuality: 100,
+    allowUpscale: false,
+    position: img.focusPctX ~ '% ' ~ img.focusPctY ~ '%'
+  } %}
+
+  {% set options = options ? defaults|merge(options) : defaults %}
+  {% set image = craft.imager.transformImage(img, options) %}
+  {% set image2x = craft.imager.transformImage(img, options) %}
+
+  {{image.url}}
+
+  {% endspaceless %}
+{% endmacro %}

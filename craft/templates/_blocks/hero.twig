@@ -1,0 +1,23 @@
+{% block content %}
+  <section class="hero">
+
+    <div class="video">
+        {{ craft.inlin.er('/media/icons/finger.svg') | raw }}
+        <video muted playsinline loop poster="/media/portrait.jpg" autoplay>
+          <source src="/media/portrait.mp4" type="video/mp4">
+        </video>
+        {# <p class="name">Leah<br />Prince</p> #}
+    </div>
+
+
+    <div class="text">
+      <h1 class="short">{{ block.headlineMobile }}</h1>
+      <h1 class="long">{{ block.headlineDesktop }}</h1>
+      <a class="button email" href="mailto:hello@leah.today" data-clipboard-text="hello@leah.today">{{ craft.inlin.er('/media/icons/envelope.svg') | raw }} Email Leah</a>
+        {# <button class="round outline" formaction="sms://0435624940'">{{ craft.inlin.er('/media/icons/bubble.svg') | raw }} iMessage</button> #}
+    </div>
+
+  </section>
+
+
+{% endblock %}

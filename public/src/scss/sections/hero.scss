@@ -1,0 +1,122 @@
+.hero {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  position: relative;
+  padding: 15px;
+  h1 {
+    font-size: 2.125em;
+    line-height: 1.1em;
+    margin-bottom: 20px;
+  }
+  h1.long {display: none;}
+  // .text {
+  //   max-width: 320px;
+  //   margin: 0 auto;
+  // }
+  .video {
+    position: relative;
+    max-width:300px;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    svg {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      // transform: translateZ(20px);
+      // z-index: 1;
+    }
+    // .name {
+    //   position: absolute;
+    //   top: 10px;
+    //   left: 10px;
+    //   filter: drop-shadow( 0px 0px 10px rgba(0,0,0,0.6) );
+    //   opacity: 0.9;
+    //   font-size: 16px;
+    //   font-weight: bold;
+    //   letter-spacing: -1px;
+    //   line-height: 18px;
+    //   text-align: left;
+    //
+    // }
+    video {
+      width: 100%;
+      height:auto;
+      border-radius: 12px;
+      &:after {
+        content: '';
+        display: block;
+        box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+        width: 100%;
+        height: auto;
+        transform: translateZ(20px);
+      }
+
+    }
+    // &.nonRetina {
+    //   display: none;
+    // }
+  }
+	@include landscape {
+    text-align: left;
+    max-width: 965px;
+    display: grid;
+    grid-template-columns: auto 190px;
+    grid-gap: 40px;
+    .text {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      h1 {
+        max-width: 600px;
+      }
+    }
+    .video {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      max-width: 100%;
+      width: auto;
+    }
+    h1.long {
+      display: block;
+    }
+    h1.short {
+      display: none;
+    }
+
+  }
+  @include desktop {
+    padding-top: 70px;
+    h1.long {
+      font-size: 3.125em;
+      line-height: 1.125em;
+      max-width: none;
+    }
+
+  }
+
+}
+
+// /* non-Retina-specific stuff here */
+// @media
+// not screen and (-webkit-min-device-pixel-ratio: 2),
+// not screen and (   min--moz-device-pixel-ratio: 2),
+// not screen and (     -o-min-device-pixel-ratio: 2/1),
+// not screen and (        min-device-pixel-ratio: 2),
+// not screen and (                min-resolution: 192dpi),
+// not screen and (                min-resolution: 2dppx) {
+//   .hero {
+//     video.nonRetina {
+//       display: inline-block;
+//     }
+//     video.retina {
+//       display: none;
+//     }
+//   }
+// }

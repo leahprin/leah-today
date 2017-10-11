@@ -1,0 +1,120 @@
+@import "other/variables";
+@import "other/reset";
+@import "other/mixins";
+@import "other/fonts";
+@import "pages/home";
+@import "sections/header";
+@import "sections/hero";
+@import "elements/buttons";
+@import "elements/project";
+
+
+
+//$lightTheme-background:
+
+
+// .dark {
+//   h1, h2 {color: #fff}
+//   header {
+//     border-top-color: 168, 107, 236, 0.5;
+//   }
+// }
+
+body {
+  background: $darkTheme-bg;
+  color: $darkTheme-text;
+  font-size: 16px;
+  line-height: 16px;
+  transition: 0.3s;
+  &:before {
+    // Gradient overlay
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 250px;
+    height: 300px;
+    width: 100%;
+    background-image: radial-gradient(ellipse farthest-corner at center bottom,rgb(35, 38, 83) 0%,rgba(35, 38, 83, 0) 60%);
+  }
+}
+
+* {
+  transition: .3s;
+}
+
+// header, main, footer {
+//   position: relative;
+//   z-index: 999;
+//   padding: 15px;
+// }
+
+
+.lightTheme {
+
+    background: rgba(251,252,254,100);
+    &:before {
+      background-image: radial-gradient(ellipse farthest-corner at center bottom,rgb(201, 209, 227) 0%,rgba(201, 209, 227, 0) 60%);
+    }
+
+  header {
+    border-color: rgba(238, 244, 255, 1.0);
+  }
+  h1 {
+    color: $lightTheme-text;
+  }
+  button.round {
+    &.outline {
+      background: rgba(255,255,255,0.3);
+    }
+  }
+  .projectHero {
+    background: #fff;
+    color: rgba(0,0,0,0.8);
+
+  }
+
+}
+
+
+
+header {
+  border-top: 3px solid rgba(168, 107, 236, 0.5);
+  padding: 15px;
+  display: none;
+  @include desktop {
+    display: block;
+  }
+  a {
+    color: rgba(174,162,200,100);
+    text-decoration: none;
+    font-size: 0.938em;
+    display: inline-flex;
+    align-self: center;
+    position: relative;
+    line-height: 20px;
+    font-weight: 400;
+    svg {
+      margin-right: 7px;
+    }
+  }
+}
+
+
+.shadow {
+  box-shadow: 10px 10px 24px rgba(0,0,0,0.9);
+}
+
+
+
+
+
+
+
+// .blur {
+//   filter: blur(5px);
+//   transition: filter 400ms;
+//   &.lazyloaded {
+//     filter: blur(0);
+//   }
+// }

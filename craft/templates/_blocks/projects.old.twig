@@ -1,0 +1,114 @@
+{% block content %}
+<section class="projects">
+  {% set projects = block.projects %}
+
+  {% if projects | length %}
+    {% for project in projects %}
+        {# {% set projectUrl = '{{ project.url }}' %} #}
+        {% for block in project.body.project %}
+          {% set firstImage = block.images.first() %}
+          {# <a href="{{project.url}}" class="projectHero shadow lazy" data-src="{{firstImage.url}}">{{firstImage.url}}</a> #}
+
+          {% set image = block.images.limit(1).first() %}
+
+
+
+          {# {% set transformedImages = craft.imager.transformImage(image,
+              [
+                  { width: 1200 },
+                  { width: 600, ratio:  29/33, jpegQuality: 90 },
+                  { width: 300, ratio:  29/33, jpegQuality: 10 },
+              ],
+              {
+                  format: 'jpg',
+                  allowUpscale: false,
+                  mode: 'crop',
+                  jpegQuality: 80,
+                  position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%',
+                  interlace: true
+              }
+          ) %} #}
+          <a href="{{project.url}}" class="project shadow">
+            {# <img class="lazyload"
+                 src="{{ craft.imager.base64Pixel(2,1) }}"
+                 data-sizes="100vw"
+                 data-srcset="{{ craft.imager.srcset(transformedImages) }}"
+                 alt="{{ image.title }}"> #}
+
+                {% set blurryImage = craft.imager.transformImage(image,
+                    {
+                      width: 290,
+                      height: 330,
+                      jpegQuality: 1,
+                      position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%',
+                      effects: {
+                        blur: true,
+                        grayscale: true
+                      }
+                    }
+                )%}
+
+
+                {% set portraitImages = craft.imager.transformImage(image,
+                    [
+                        { width: 1200, ratio:  29/33 },
+                        { width: 600, ratio:  29/33 },
+                        { width: 300, ratio:  29/33 },
+                    ],
+                    {
+                        format: 'jpg',
+                        allowUpscale: false,
+                        mode: 'crop',
+                        jpegQuality: '90',
+                        position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%',
+                    }
+                ) %}
+
+                  {# Create transforms#}
+                  {# {% set landscapeImageSizes = [{ width: 600 }, { width: 800 }, { width: 1000 }, { width: 1200 }] %}
+                  {% set landscapeImages = craft.imager.transformImage(image, landscapeImageSizes) %} #}
+
+                  {# If the server has support for WebP, create transforms #}
+                  {# {% if craft.imager.serverSupportsWebp() %}
+                      {% set transformedImagesWebp = craft.imager.transformImage(image, landscapeImages, { format: 'webp' }) %}
+                  {% endif %} #}
+
+                  {# Output picture element with a separate source for clients that support WebP #}
+                  {# <picture>
+                      {% if craft.imager.serverSupportsWebp() %}
+                          <source sizes="100vw" srcset="{{ craft.imager.srcset(transformedImagesWebp) }}" type="image/webp">
+                      {% endif %} #}
+
+                      {# <img src="{{ craft.imager.base64Pixel() }}" sizes="100vw" srcset="{{ craft.imager.srcset(transformedImages) }}"> #}
+                      {# <img
+                      	data-sizes="auto"
+                        src=""
+                      	data-srcset=""
+                       class="lazyload blur" />
+                  </picture> #}
+
+                  <a ic-post-to="/target_span" ic-get-from="{{project.url}}" ic-target='#target_span' ic-push-url="true">
+                    <picture class="project">
+                    	<source data-srcset="{{ craft.imager.srcset(portraitImages) }}" media="all and (orientation:portrait)" />
+                    	{# <source data-srcset="{{ craft.imager.srcset(landscapeImages) }}" media="(min-width : 1200px)" /> #}
+                    	<img
+                      	src="{{ blurryImage.url }}"
+                    		class="lazyload"
+                    		data-sizes="auto"
+                    		alt="image with artdirection" />
+                    </picture>
+                    <span id="target_span" style="background: red;">You haven't clicked the link next to me...</span>
+                </a>
+
+
+
+
+
+
+
+          </a>
+
+          {% endfor %}
+    {% endfor %}
+  {% endif %}
+{% endblock %}

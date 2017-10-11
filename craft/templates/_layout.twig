@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {# <meta name="intercoolerjs:use-data-prefix" content="true"/> #}
+    <title>Leah Prince: {{ siteUrl }}</title>
+
+    {% if craft.config.devMode %}
+      <link rel="stylesheet" href="/dist/style.css">
+    {% else %}
+      {% minify css %}
+        <style>
+        {{ craft.inlin.er('/dist/style.css') | raw }}
+        </style>
+      {% endminify %}
+    {% endif %}
+
+
+  </head>
+  <body class="preload darkTheme">
+    <div id="app">
+      {% include '_partials/header' %}
+      <main class="js-main {{entry.type.handle}} {% if entry.type.handle == "project" %}show{% endif %}" role="main">
+  			{% block content %}
+  				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+  				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+  			{% endblock %}
+		  </main>
+    </div>
+    {% include '_partials/scripts' %}
+  </body>
+</html>
