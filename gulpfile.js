@@ -24,14 +24,18 @@ gulp.task('sass', function() {
 
 });
 
-// gulp.task('build-css', function() {
-//
-//     gulp.src('./css/style.css')
-//         .pipe(minify())
-//         .pipe(rename({suffix: '.min'}))
-//         .pipe(gulp.dest('./css'));
-//
-// });
+gulp.task('build-css', function() {
+
+    gulp.src('public/src/scss/global.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions']
+        }))
+        .pipe(minify())
+        .pipe(concat('style.min.css'))
+        .pipe(gulp.dest('public/dist'));
+
+});
 
 // gulp.task('build-js', function() {
 //

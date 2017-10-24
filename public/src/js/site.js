@@ -137,6 +137,21 @@ $('.toggle').on('click', function(e) {
 //
 // }
 
+
+function smoothScroll(el, to, duration) {
+    if (duration < 0) {
+        return;
+    }
+    var difference = to - $(window).scrollTop();
+    var perTick = difference / duration * 10;
+    this.scrollToTimerCache = setTimeout(function() {
+        if (!isNaN(parseInt(perTick, 10))) {
+            window.scrollTo(0, $(window).scrollTop() + perTick);
+            smoothScroll(el, to, duration - 10);
+        }
+    }.bind(this), 10);
+}
+
 function showProject() {
   console.log("showing project");
   $(this).addClass("show"); //refactor
@@ -149,38 +164,82 @@ function showProject() {
 }
 
 function hideProject() {
-  console.log("hiding project");
-  $('.headline, header, .card').not($(this)).show();
-  $(this).removeClass("show");
 
-  $(this).find(".detail").empty();
-  $(this)[0].scrollIntoView({
-    behavior: "smooth", // or "auto" or "instant"
-    block: "start" // or "end"
-  });
+  var activeCard = $(".show");
+  console.log("hiding project");
+  console.log(activeCard);
+
+  $('.headline, header, .card').not(activeCard).show();
+  activeCard.removeClass("show").addClass("seen");
+
+  //
+  // $(".seen")[0].scrollIntoView({
+  //   behavior: "smooth", // or "auto" or "instant"
+  //   block: "start" // or "end"
+  // });
+
+  //smoothScroll($(window), $($(e.currentTarget).attr('href')).offset().top, 200);
   history.pushState({}, '', '/');
+  $(".seen").find(".detail").empty();
+  $(".seen").removeClass(".seen");
   return false;
 }
 
-// function hideProject() {
-//      console.log("hiding project");
-//      $('.headline, header, .card').not($(this)).show();
-//      $(this).removeClass("show");
-//
-//     $(this).find(".detail").empty();
-//
-//      $(this)[0].scrollIntoView({
-//          behavior: "smooth", // or "auto" or "instant"
-//          block: "start" // or "end"
-//      });
-//
-//
-//        console.log(scrollPos);
-//     history.pushState({}, '', '/');
-// }
+$('.show .image').click(hideProject());
 
 
-// $('.card').bind('touchstart touchend', function(e) {
-//     e.preventDefault();
-//     $(this).toggleClass('hover');
-// });
+// ReFACTOR to only run on the homepage - is it really needed?
+// var videoInterval = setInterval(function() {
+//   $("#leah video")[0].play();
+//   console.log("playing video")
+// }, 1000);
+
+// Photoswipe
+
+(function($) {
+    var $pswp = $('.pswp')[0];
+    var image = [];
+
+    $('.picture').each( function() {
+        var $pic     = $(this),
+            getItems = function() {
+                var items = [];
+                $pic.find('a').each(function() {
+                    var $href   = $(this).attr('href'),
+                        $size   = $(this).data('size').split('x'),
+                        $width  = $size[0],
+                        $height = $size[1];
+
+                    var item = {
+                        src : $href,
+                        w   : $width,
+                        h   : $height
+                    }
+
+                    items.push(item);
+                });
+                return items;
+            }
+
+        var items = getItems();
+
+        $.each(items, function(index, value) {
+            image[index]     = new Image();
+            image[index].src = value['src'];
+        });
+
+        $pic.on('click', 'figure', function(event) {
+            event.preventDefault();
+
+            var $index = $(this).index();
+            var options = {
+                index: $index,
+                bgOpacity: 0.7,
+                showHideOpacity: true
+            }
+
+            var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+            lightBox.init();
+        });
+    });
+})(Zepto);

@@ -13,6 +13,8 @@
 
     {% if craft.config.devMode %}
       <link rel="stylesheet" href="/dist/style.css">
+      <link rel="stylesheet" href="/src/vendor/photo-swipe/photoswipe.css">
+      <link rel="stylesheet" href="/src/vendor/photo-swipe/default-skin.css">
     {% else %}
       {% minify css %}
         <style>
@@ -26,11 +28,12 @@
   <body>
     <div id="app">
       {% include '_partials/header' %}
-      <main class="{{entry.type.handle}} {% if entry.type.handle == "project" %}show{% endif %}" role="main">
+      <main class="{% if entry.type.handle is defined %}{{entry.type.handle}} {% if entry.type.handle == "project" %}show{% endif %}{% endif %}" role="main">
   			{% block content %}
   			{% endblock %}
 		  </main>
     </div>
+    {% include '_partials/photo-swipe' %}
     {% include '_partials/scripts' %}
   </body>
 </html>

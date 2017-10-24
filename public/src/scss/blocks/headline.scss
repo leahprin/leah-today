@@ -4,8 +4,28 @@
     line-height: 33px;
     letter-spacing: -0.7px;
     margin-bottom: 30px;
+    // font-size: 1.875rem;
+
+    // font-size: calc(
+    //  var(--min-font) + var(--font-range)
+    //   * (100vw - var(--min-viewport))
+    //  / var(--viewport-range) );
+
+    // @include fluid-type(font-size, 0, 100vw, 14px, 40px);
     strong {
       color: rgba(255,85,141,100);
     }
   }
+}
+
+
+// :root {
+//   --font-range: 59 - 10;
+//   --min-font: 1.2em;
+//   --min-viewport: 400px;
+//   --viewport-range: 800 - 400;
+// }
+
+h2 {
+
 }

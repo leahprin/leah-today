@@ -11,6 +11,8 @@
 
 @import "sections/hero";
 @import "elements/buttons";
+
+// @import "other/photo-swipe/default-skin";
 // @import "elements/project";
 
 
@@ -122,10 +124,13 @@ section {
 
 
 
-// .blur {
-//   filter: blur(5px);
-//   transition: filter 400ms;
-//   &.lazyloaded {
-//     filter: blur(0);
-//   }
+// LIGHT THEME
+// :root {
+//    //background-color: #fefefe;
+//    filter: invert(100%);
+// }
+//
+//
+// img:not([src*=".svg"]), video {
+//    filter: invert(100%);
 // }
