@@ -3,7 +3,6 @@
 @import "other/mixins";
 @import "other/fonts";
 @import "pages/home";
-// @import "sections/header";
 @import "blocks/header";
 @import "blocks/headline";
 @import "blocks/card";
@@ -46,9 +45,7 @@ body {
   // }
 }
 
-* {
-  transition: .3s;
-}
+
 
 // header, main, footer {
 //   position: relative;

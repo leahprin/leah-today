@@ -1,6 +1,5 @@
 {% block content %}
-  <section class="paragraph">
+  <section class="paragraph {% if block.highlight %}highlight {% endif %}">
     {{block.paragraph}}
   </section>
-
 {% endblock %}

@@ -2,10 +2,27 @@ header {
   padding-left: 20px;
   margin-bottom: 16px;
   margin-top: 20px;
+  // a {
+  // display: flex;
+  // align-items: center;
+  // text-decoration: none;
+  // }
+  //justify-content: center;
+
   svg, img {
     width: 35px;
     height: 51px;
     position: relative;
     top: -1px;
   }
+  // small {
+  //   margin-left: 10px;
+  //   color: #fff;
+  //   font-size: 16px;
+  //   position: relative;
+  //   top: -6px;
+  //   letter-spacing: -1px;
+  //   width: auto;
+  //   opacity: 0.9
+  // }
 }

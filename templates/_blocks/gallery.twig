@@ -1,12 +1,11 @@
-<div class="picture" itemscope itemtype="http://schema.org/ImageGallery">
-  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <a href="/media/test/dog-large.jpg" itemprop="contentUrl" data-size="1000x667" data-index="0">
-      <img src="/media/test/dog.jpg" height="400" width="600" itemprop="thumbnail" alt="Beach">
-    </a>
-  </figure>
-  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-      <a href="img/city-2.jpg" itemprop="contentUrl" data-size="1000x667" data-index="1">
-          <img src="img/city-2-thumb.jpg" height="400" width="600" itemprop="thumbnail" alt="">
-      </a>
-  </figure>
-</div>
+{% block content %}
+  <section class="gallery">
+    <div class="picture" itemscope itemtype="http://schema.org/ImageGallery">
+      <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <a href="/media/test/dog-large.jpg" itemprop="contentUrl" data-size="1000x667" data-index="0">
+          <img src="/media/test/dog.jpg" height="400" width="600" itemprop="thumbnail" alt="Beach">
+        </a>
+      </figure>
+    </div>
+  </section>
+{% endblock %}

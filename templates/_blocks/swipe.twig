@@ -1,0 +1,17 @@
+{% block content %}
+
+<section class="swipe">
+  <div class="swipeImages">
+  {% for image in block.swipe %}
+    <div class="image" style="background-image: url('{{ image.portrait.first().url }}');">image</div>
+  {% endfor %}
+  </div>
+  <div class="swipeIndicators">
+    {% for image in block.swipe %}
+    <span class="indicator"></span>
+    {% endfor %}
+  </div>
+</section>
+
+
+{% endblock %}
