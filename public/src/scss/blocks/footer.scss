@@ -1,5 +1,5 @@
 footer {
-	background: rgba(124, 142, 161, 0.2);
+	background: #151526;
 	margin-top: 60px;
 	padding: 30px 0;
 	//display: none;
@@ -40,13 +40,13 @@ footer {
 	}
 }
 
-.project footer {
-	//margin-top: -99px;
+.homepage footer {
+	background: rgba(124, 142, 161, 0.09);
 }
 
 @include desktop {
 	footer {
-		margin-top: 100px;
+		margin-top: 0;
 		padding: 40px 0;
 		.container {
 			display: grid;

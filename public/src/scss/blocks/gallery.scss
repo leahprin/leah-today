@@ -35,6 +35,9 @@
 		&.fullWidth {
 			display: block;
 		}
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 	figure {
 		margin-bottom: 30px;
@@ -62,6 +65,15 @@
 		background: red;
 		display: block;
 	}
+}
+
+#gallery {
+	margin-bottom: 0;
+	padding-bottom: 200px;
+}
+.project footer {
+	margin-top: -97px;
+	background: rgba(0, 0, 0, 0.2);
 }
 
 @include desktop {
