@@ -1,9 +1,0 @@
-{% block content %}
-
-
-  {% for image in block.images %}
-    {% set transformedImage = craft.imager.transformImage(image, { width: 1000 }) %}
-          <img src="{{ transformedImage.url }}"/>
-  {% endfor %}
-
-{% endblock %}

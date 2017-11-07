@@ -1,18 +1,13 @@
 {# {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_projectAjax" : "_layout" %} #}
 
 
-{% set isAjax = craft.request.isAjax and not craft.request.isLivePreview %}
-{% extends not isAjax ? '_layout' : '_projectAjax' %}
+{% extends '_layout' %}
 
 {% block content %}
   {% for block in entry.body.level(1) %}
-    {% if isAjax %}
       {% if block.type.handle == "card" %}
       {% else %}
         {% include '_blocks/' ~ block.type.handle with {block: block} only %}
       {% endif %}
-    {% else %}
-        {% include '_blocks/' ~ block.type.handle with {block: block} only %}
-    {% endif %}
   {% endfor %}
 {% endblock %}

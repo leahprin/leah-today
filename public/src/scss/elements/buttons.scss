@@ -1,33 +1,36 @@
 .button {
-  background: rgba(168,107,236,100);
-  border: 2px solid rgba(168,107,236,0);
-  border-radius: 2em;
-  font-family: 'sanfran';
-  min-width: 180px;
-  line-height: 43px;
-  padding-bottom: 2px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  font-size: 17px;
-  letter-spacing: -1px;
-  svg {
-    margin-right: 8px;
-    height: 17px;
-    width: 17px;
-  }
-  &:focus, &:hover {
-    background: none;
-    border: 2px solid rgba(168,107,236,100);
-    color: rgba(196,138,255,100);
-    svg path {
-      fill: rgba(196,138,255,100);
-    }
-  }
-  // &:hover {
-  //   background: #22A8FA;
-  // }
+	border-radius: 2em;
+	font-family: "sanfran";
+	min-width: 180px;
+	line-height: 43px;
+	padding-bottom: 2px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+
+	font-weight: bold;
+	font-size: 17px;
+	letter-spacing: -1px;
+	background: none;
+	border: 2px solid #ff906f;
+	color: #fe9e81;
+	svg {
+		margin-right: 8px;
+		height: 17px;
+		width: 17px;
+		fill: #ff906f;
+	}
+	&:focus,
+	&:hover {
+		color: #fff;
+		background: rgba(255, 143, 108, 1);
+		border: 2px solid rgba(255, 143, 108, 0);
+		svg path {
+			fill: #fff;
+		}
+	}
+	// &:hover {
+	//   background: #22A8FA;
+	// }
 }

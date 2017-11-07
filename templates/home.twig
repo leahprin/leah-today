@@ -1,7 +1,13 @@
-{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% extends '_layout' %}
 
 {% block content %}
       {% for block in entry.body.level(1) %}
           {% include '_blocks/' ~ block.type.handle with {'block': block} only %}
       {% endfor %}
+      <script>
+        var videoInterval = setInterval(function() {
+          $("#leah video")[0].play();
+          //console.log("playing video")
+        }, 1000);
+      </script>
 {% endblock %}

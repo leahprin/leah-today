@@ -1,23 +1,40 @@
 .headline {
-  h1 {
-    font-size: 29px;
-    line-height: 33px;
-    letter-spacing: -0.7px;
-    margin-bottom: 30px;
-    // font-size: 1.875rem;
+	margin-top: 100px;
+	h1 {
+		font-size: 29px;
+		line-height: 33px;
+		letter-spacing: -0.7px;
+		margin-bottom: 30px;
 
-    // font-size: calc(
-    //  var(--min-font) + var(--font-range)
-    //   * (100vw - var(--min-viewport))
-    //  / var(--viewport-range) );
+		// font-size: 1.875rem;
 
-    // @include fluid-type(font-size, 0, 100vw, 14px, 40px);
-    strong {
-      color: rgba(255,85,141,100);
-    }
-  }
+		// font-size: calc(
+		//  var(--min-font) + var(--font-range)
+		//   * (100vw - var(--min-viewport))
+		//  / var(--viewport-range) );
+
+		// @include fluid-type(font-size, 0, 100vw, 14px, 40px);
+		// strong {
+		// 	color: #ff8f6c;
+		// }
+	}
 }
 
+@include landscape {
+	.headline h1 {
+		font-size: 40px;
+		line-height: 44px;
+		letter-spacing: -0.4px;
+	}
+}
+
+@include desktop {
+	.headline h1 {
+		font-size: 51px;
+		line-height: 50px;
+		letter-spacing: -0.4px;
+	}
+}
 
 // :root {
 //   --font-range: 59 - 10;
@@ -27,5 +44,4 @@
 // }
 
 h2 {
-
 }

@@ -68,7 +68,14 @@ gulp.task('serve', function() {
                 bottom: '0'
             }
         },
-
+        snippetOptions: {
+          rule: {
+            match: /<\/head>/i,
+            fn: function (snippet, match) {
+              return snippet + match;
+            }
+          }
+        },
     });
 
 })

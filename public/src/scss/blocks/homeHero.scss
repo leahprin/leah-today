@@ -1,0 +1,66 @@
+.homeHero {
+	margin-top: 100px;
+	margin-bottom: 20px;
+	.headline {
+		margin-top: 0;
+		.button {
+			display: none;
+		}
+	}
+	.card,
+	.card .video {
+		margin: 0 auto;
+	}
+}
+
+@include landscape {
+	.homeHero {
+		display: grid;
+		grid-template-columns: auto 160px;
+		grid-column-gap: 40px;
+		vertical-align: top;
+		margin: 120px auto 80px auto;
+		padding: 0 60px;
+		.headline .button {
+			display: inline-flex;
+		}
+		.card {
+			max-width: 100%;
+			margin: 0;
+			margin-top: -10px;
+			.video {
+				text-align: center;
+				video {
+					border-radius: 12px;
+				}
+				button {
+					background: none;
+					position: relative;
+					box-shadow: none;
+					border-radius: 0;
+					left: 0;
+					bottom: 0;
+					margin-top: 20px;
+					display: inline;
+					text-align: center;
+					text-decoration: none;
+					-webkit-appearance: none;
+					span {
+						padding-left: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include desktop {
+	.homeHero {
+		display: grid;
+		grid-template-columns: auto 180px;
+		grid-column-gap: 50px;
+		vertical-align: top;
+		margin: 150px auto 110px auto;
+		padding: 0 70px;
+	}
+}

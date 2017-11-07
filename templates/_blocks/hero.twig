@@ -1,23 +1,39 @@
 {% block content %}
-  <section class="hero">
+  <section class="hero background">
 
-    <div class="video">
-        {{ craft.inlin.er('/media/icons/finger.svg') | raw }}
-        <video muted playsinline loop poster="/media/portrait.jpg" autoplay>
-          <source src="/media/portrait.mp4" type="video/mp4">
-        </video>
-        {# <p class="name">Leah<br />Prince</p> #}
-    </div>
+    {% if block.swipe is defined %}
+      <section class="swipe">
+        <a class="close" href="/#{{block.slug}}">
+          {{ craft.inlin.er('/media/icons/x.svg') | raw }}
+        </a>
+        <div class="images">
+        {% for image in block.swipe %}
+          <img src="{{ image.url() }}"/>
+        {% endfor %}
+        </div>
+      </section>
+    {% endif %}
 
-
-    <div class="text">
-      <h1 class="short">{{ block.headlineMobile }}</h1>
-      <h1 class="long">{{ block.headlineDesktop }}</h1>
-      <a class="button email" href="mailto:hello@leah.today" data-clipboard-text="hello@leah.today">{{ craft.inlin.er('/media/icons/envelope.svg') | raw }} Email Leah</a>
-        {# <button class="round outline" formaction="sms://0435624940'">{{ craft.inlin.er('/media/icons/bubble.svg') | raw }} iMessage</button> #}
-    </div>
+    {% if block.images is defined %}
+      <section
+      class="gallery {{ block.alignBottom ? 'alignBottom' }} {% if block.highlight%} highlight{% endif %}"
+      {% if block.cssStyles %} style="{{block.cssStyles}}"{% endif %}
+      >
+        <div class="container">
+        {% for image in block.images %}
+        <figure>
+          <img
+            src="{{image.url}}"
+            data-zoom-target="{{image.url}}"
+            alt="HD zoom on thumb image"
+            {% if image.noZoom == 1 %}{% else %}data-action="zoom"{% endif %}
+          >
+          {% if image.paragraph is defined %}<figcaption>{{image.paragraph}}</figcaption>{% endif %}
+        </figure>
+        {% endfor %}
+        </div>
+      </section>
+    {% endif %}
 
   </section>
-
-
 {% endblock %}

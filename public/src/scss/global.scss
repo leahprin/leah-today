@@ -6,18 +6,21 @@
 @import "blocks/header";
 @import "blocks/headline";
 @import "blocks/card";
+@import "blocks/hero";
+@import "blocks/swipe";
 @import "blocks/paragraph";
+@import "blocks/gallery";
+@import "blocks/tldr";
+@import "blocks/homeHero";
+@import "blocks/footer";
 
-@import "sections/hero";
+// @import "sections/hero";
 @import "elements/buttons";
 
 // @import "other/photo-swipe/default-skin";
 // @import "elements/project";
 
-
-
 //$lightTheme-background:
-
 
 // .dark {
 //   h1, h2 {color: #fff}
@@ -27,25 +30,26 @@
 // }
 
 body {
-  background: $darkTheme-bg;
-  color: $darkTheme-text;
-  font-size: 16px;
-  line-height: 16px;
-  transition: 0.3s;
-  // &:before {
-  //   // Gradient overlay
-  //   content: '';
-  //   display: block;
-  //   position: absolute;
-  //   left: 0;
-  //   top: 250px;
-  //   height: 300px;
-  //   width: 100%;
-  //   background-image: radial-gradient(ellipse farthest-corner at center bottom,rgb(35, 38, 83) 0%,rgba(35, 38, 83, 0) 60%);
-  // }
+	background: $darkTheme-bg;
+	color: $darkTheme-text;
+	font-size: 16px;
+	line-height: 16px;
+	transition: 0.3s;
+	// &:before {
+	//   // Gradient overlay
+	//   content: '';
+	//   display: block;
+	//   position: absolute;
+	//   left: 0;
+	//   top: 250px;
+	//   height: 300px;
+	//   width: 100%;
+	//   background-image: radial-gradient(ellipse farthest-corner at center bottom,rgb(35, 38, 83) 0%,rgba(35, 38, 83, 0) 60%);
+	// }
+	&.project {
+		background: #fff;
+	}
 }
-
-
 
 // header, main, footer {
 //   position: relative;
@@ -54,10 +58,19 @@ body {
 // }
 
 section {
-  padding: 0 20px;
-  & > section, &.projects {
-    padding: 0;
-  }
+	padding: 0 20px;
+	box-sizing: border-box;
+	& > section,
+	&.projects {
+		padding: 0;
+	}
+	@include landscape {
+		max-width: 1140px;
+		margin: 0 auto;
+	}
+	@include desktop {
+		padding: 0;
+	}
 }
 //
 // .lightTheme {
@@ -86,8 +99,6 @@ section {
 //
 // }
 
-
-
 // header {
 //   border-top: 3px solid rgba(168, 107, 236, 0.5);
 //   padding: 15px;
@@ -110,16 +121,90 @@ section {
 //   }
 // }
 
-
 .shadow {
-  box-shadow: 10px 10px 24px rgba(0,0,0,0.9);
+	box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.9);
 }
 
+#flow {
+	.background,
+	.highlight {
+		background-image: linear-gradient(
+			to bottom right,
+			#0f64d4 0%,
+			#10a7fd 43.7%,
+			#0fd1ab 100%
+		);
+	}
+}
 
+#rovr {
+	.background,
+	.highlight {
+		background-image: linear-gradient(
+			to bottom right,
+			#ff9484 50%,
+			#ffaa77 100%
+		);
+	}
+}
 
+#cognitives {
+	.background,
+	.highlight {
+		background-image: linear-gradient(
+			to bottom right,
+			#818c9f 20%,
+			#49515f 100%
+		);
+	}
+}
 
+#lantern {
+	.background,
+	.highlight {
+		background-image: radial-gradient(
+			ellipse farthest-corner at center bottom,
+			rgb(121, 4, 117) 20%,
+			rgb(55, 13, 122) 100%
+		);
+	}
+}
 
+#leah {
+	.background,
+	.highlight {
+		background-image: radial-gradient(
+			ellipse farthest-corner at center bottom,
+			#e3c1ac 40%,
+			#ceb09e 100%
+		);
+	}
+	.hero .gallery figure {
+		max-width: 520px;
+	}
+}
 
+.columns {
+	display: none;
+	h2 {
+		font-size: 22px;
+		border: none;
+		color: #fff;
+		margin-bottom: 10px;
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		li {
+			list-style: none;
+			list-style-position: outside;
+			padding: 0;
+			margin: 0;
+			color: rgba(146, 167, 189, 0.7);
+			text-transform: capitalize;
+		}
+	}
+}
 
 // LIGHT THEME
 // :root {

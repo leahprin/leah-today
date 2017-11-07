@@ -1,11 +1,35 @@
 {% block content %}
-  <section class="gallery">
-    <div class="picture" itemscope itemtype="http://schema.org/ImageGallery">
-      <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <a href="/media/test/dog-large.jpg" itemprop="contentUrl" data-size="1000x667" data-index="0">
-          <img src="/media/test/dog.jpg" height="400" width="600" itemprop="thumbnail" alt="Beach">
-        </a>
-      </figure>
-    </div>
+
+
+  {# {% for image in block.images %}
+    {% set transformedImage = craft.imager.transformImage(image, { width: 1000 }) %}
+          <img src="{{ transformedImage.url }}"/>
+  {% endfor %} #}
+  <section
+    class="gallery {{ block.alignBottom ? 'alignBottom' }} {{ block.highlight ? 'highlight' }} {{ block.cssClasses ?? '' }}"
+    {% if block.cssStyles %} style="{{block.cssStyles}}"{% endif %}
+    {% if block.cssId %} id="{{block.cssId}}"{% endif %}>
+      {% for block in block.children %}
+        {% switch block.type.handle %}
+          {% case 'images' %}
+            {% if block.headline %}<h3>{{block.headline}}</h3>{% endif %}
+            <div class="container {{ block.fullWidth ? 'fullWidth' }}">
+              {% for image in block.images %}
+              <figure>
+                <img
+                  src="{{image.url}}"
+                  data-zoom-target="{{image.url}}"
+                  alt="HD zoom on thumb image"
+                  class="{{ image.noShadow ? 'noShadow' }}"
+                  {% if image.noZoom == 1 %}{% else %}data-action="zoom"{% endif %}
+                >
+                {% if image.paragraph is defined %}<figcaption>{{image.paragraph}}</figcaption>{% endif %}
+              </figure>
+              {% endfor %}
+            </div>
+        {% endswitch %}
+      {% endfor %}
+
   </section>
+
 {% endblock %}

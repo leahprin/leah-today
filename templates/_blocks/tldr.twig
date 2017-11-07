@@ -1,0 +1,12 @@
+{% block content %}
+  <section class="tldr">
+    <div class="container">
+      {{block.paragraph}}
+      <nav>
+        {% for link in block.linkList %}
+          <a href="{{ link.href }}" target="{{ link.target }}" class="btn">{{ link.text }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </section>
+{% endblock %}

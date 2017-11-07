@@ -1,17 +1,19 @@
 {% block content %}
 
-<section class="swipe">
-  <div class="swipeImages">
-  {% for image in block.swipe %}
-    <div class="image" style="background-image: url('{{ image.portrait.first().url }}');">image</div>
-  {% endfor %}
-  </div>
-  <div class="swipeIndicators">
+  <section class="swipe">
+    <a class="close" href="/#{{block.slug}}">
+      {{ craft.inlin.er('/media/icons/x.svg') | raw }}
+    </a>
+    <div class="images">
     {% for image in block.swipe %}
-    <span class="indicator"></span>
+      <img src="{{ image.url() }}"/>
     {% endfor %}
-  </div>
-</section>
-
+    </div>
+    {# <div class="indicators">
+      {% for image in block.swipe %}
+        <span {% if loop.first %}class="active"{% endif %}></span>
+      {% endfor %}
+    </div> #}
+  </section>
 
 {% endblock %}

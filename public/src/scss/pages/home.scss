@@ -1,1 +1,20 @@
+// .homepage {
+// 	padding: 0 20px;
+// }
 
+#leah .columns {
+	display: block;
+	h2 {
+		color: #485964;
+	}
+}
+
+@include desktop {
+	.homepage .paragraph,
+	#leah .columns {
+		display: grid;
+		grid-template-columns: 25% 25% 25% 25%;
+		grid-column-gap: 20px;
+		max-width: 1000px;
+	}
+}

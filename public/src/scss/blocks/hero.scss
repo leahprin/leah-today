@@ -1,0 +1,33 @@
+.hero {
+	padding: 0;
+	margin-bottom: 20px;
+	max-width: none;
+	.gallery {
+		display: none;
+		&.highlight {
+			//max-height: 50vh;
+			margin-top: 0;
+			figure {
+				max-width: 80vw;
+				img {
+					box-shadow: none;
+				}
+			}
+		}
+	}
+}
+
+@include desktop {
+	.hero {
+		.swipe {
+			display: none;
+		}
+		.gallery {
+			display: block;
+		}
+	}
+}
+
+// @include landscape {
+//   max-width: 1200px;
+// }

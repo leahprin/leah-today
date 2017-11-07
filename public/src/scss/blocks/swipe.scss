@@ -1,0 +1,59 @@
+.swipe {
+  position: relative;
+  padding: 0;
+
+  .close {
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    z-index: 999;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 13px;
+    }
+  }
+  .images {
+    //height: 50vh;
+    transition: none;
+    width: 100%;
+    img {
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+      //max-height: 70vh;
+    }
+  }
+  .dots {
+    display:flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    right: 10px;
+    .dots__item {
+      height: 3px;
+      flex-basis: 100%;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.4);
+      display: block;
+      margin: 0 2px;
+      &.dots__item--active {
+        background: #fff;
+      }
+    }
+  }
+}
+
+.swipe {
+  @include desktop {
+    .close {
+      display: none;
+    }
+  }
+}
