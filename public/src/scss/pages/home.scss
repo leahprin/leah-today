@@ -14,4 +14,7 @@
 
 .homepage .columns {
 	display: none;
+	@include desktop {
+		display: grid;
+	}
 }
