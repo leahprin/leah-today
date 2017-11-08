@@ -1,5 +1,6 @@
 <footer>
   <div class="container">
+    {% if entry.slug == "homepage"%}
     <aside>
       <h2>Leah Prince</h2>
     </aside>
@@ -10,6 +11,9 @@
         <a href="mailto:hello@leah.today" data-clipboard-text="hello@leah.today">Email</a>
       </nav>
     </aside>
+    {% else %}
+    <a class="button" href="/">&#x2190; Back to Projects</a>
+    {% endif %}
   </div>
 </footer>
 

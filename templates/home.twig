@@ -4,10 +4,10 @@
       {% for block in entry.body.level(1) %}
           {% include '_blocks/' ~ block.type.handle with {'block': block} only %}
       {% endfor %}
-      <script>
+      {# <script>
         var videoInterval = setInterval(function() {
           $("#leah video")[0].play();
           //console.log("playing video")
         }, 1000);
-      </script>
+      </script> #}
 {% endblock %}

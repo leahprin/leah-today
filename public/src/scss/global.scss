@@ -138,12 +138,20 @@ section {
 }
 
 #rovr {
+	// .background,
+	// .highlight {
+	// 	background-image: linear-gradient(
+	// 		to bottom right,
+	// 		#ff9484 50%,
+	// 		#ffaa77 100%
+	// 	);
+	// }
 	.background,
 	.highlight {
 		background-image: linear-gradient(
 			to bottom right,
-			#ff9484 50%,
-			#ffaa77 100%
+			#818c9f 20%,
+			#49515f 100%
 		);
 	}
 }
@@ -152,10 +160,14 @@ section {
 	.background,
 	.highlight {
 		background-image: linear-gradient(
-			to bottom right,
-			#818c9f 20%,
-			#49515f 100%
+			140deg,
+			#8cffe4 0%,
+			#7bd2dd 24%,
+			#4845c8 100%
 		);
+	}
+	footer {
+		margin-top: 0;
 	}
 }
 
@@ -182,26 +194,16 @@ section {
 	.hero .gallery figure {
 		max-width: 520px;
 	}
-}
-
-.columns {
-	display: none;
-	h2 {
-		font-size: 22px;
-		border: none;
-		color: #fff;
-		margin-bottom: 10px;
+	footer {
+		margin-top: 100px;
 	}
-	ul {
-		margin: 0;
-		padding: 0;
-		li {
-			list-style: none;
-			list-style-position: outside;
-			padding: 0;
-			margin: 0;
-			color: rgba(146, 167, 189, 0.7);
-			text-transform: capitalize;
+	.columns {
+		display: block;
+		h2 {
+			color: #485964;
+		}
+		@include desktop {
+			display: grid;
 		}
 	}
 }

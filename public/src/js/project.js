@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	console.log("project loaded");
+	//console.log("project loaded");
 	class SiemaWithDots extends Siema {
 		addDots() {
 			// create a contnier for all dots

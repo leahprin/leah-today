@@ -1,7 +1,7 @@
 {% block content %}
   <section class="hero background">
 
-    {% if block.swipe is defined %}
+    {% if block.swipe | length %}
       <section class="swipe">
         <a class="close" href="/#{{block.slug}}">
           {{ craft.inlin.er('/media/icons/x.svg') | raw }}
@@ -14,7 +14,7 @@
       </section>
     {% endif %}
 
-    {% if block.images is defined %}
+    {% if block.images | length  %}
       <section
       class="gallery {{ block.alignBottom ? 'alignBottom' }} {% if block.highlight%} highlight{% endif %}"
       {% if block.cssStyles %} style="{{block.cssStyles}}"{% endif %}

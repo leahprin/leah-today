@@ -3,7 +3,7 @@
 	margin-bottom: 20px;
 	max-width: none;
 	.gallery {
-		display: none;
+		//display: none;
 		&.highlight {
 			//max-height: 50vh;
 			margin-top: 0;
@@ -15,18 +15,37 @@
 			}
 		}
 	}
+	.swipe + .gallery {
+		display: none;
+	}
 }
 
-@include desktop {
+@include landscape {
 	.hero {
 		.swipe {
 			display: none;
 		}
 		.gallery {
-			display: block;
+			display: block !important;
 		}
 	}
 }
+
+// mobile
+// 	if swipe and gallery exist, show swipe
+// desktop
+// 	hide swipe.
+
+// @include desktop {
+// 	.hero {
+// 		.swipe {
+// 			display: none;
+// 		}
+// 		.gallery {
+// 			display: block;
+// 		}
+// 	}
+// }
 
 // @include landscape {
 //   max-width: 1200px;
