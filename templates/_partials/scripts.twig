@@ -17,8 +17,12 @@
 new Clipboard('.email');
 </script> #}
 <script>
-  var clipboard = new Clipboard('.email');
 
+document.getElementById('email').onclick = function(e){
+    e.preventDefault();
+}
+
+  var clipboard = new Clipboard('.email');
   clipboard.on('success', function(e) {
       e.trigger.innerHTML = "Email Copied";
       e.clearSelection();
