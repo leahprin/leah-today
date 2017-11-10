@@ -14,19 +14,20 @@
     <div class="headline">
       <div class="hideMobile" style="display: none;">{{block.headlineDesktop}}</div>
       <div class="hideDesktop">{{block.headlineMobile}}</div>
-      <a class="button email" href="mailto:hello@leah.today" data-clipboard-text="hello@leah.today">{{ craft.inlin.er('/media/icons/envelope.svg') | raw }} Email Leah</a>
+      <a class="button email" href="mailto:hello@leah.today" onClick="return false;" data-clipboard-text="hello@leah.today">{{ craft.inlin.er('/media/icons/envelope.svg') | raw }} Email Leah</a>
     </div>
 
     {% if block.video | length %}
       {% set project = block.project.first() %}
       <a class="card" id="{{project.slug}}" href="/{{project.uri}}">
         <div class="video">
+          {{ craft.inlin.er('/media/icons/finger-white.svg') | raw }}
           {% for block in block.video %}
             <video muted playsinline loop autoplay poster="{{block.placeholderImage.first().url}}">
               <source src="{{block.video.first().url}}" type="video/mp4">
             </video>
           {% endfor %}
-          <button><span class="extraSmallText">Leah Prince</span>{{ craft.inlin.er('/media/icons/finger-white.svg') | raw }}</button>
+          <button>Leah Prince</button>
         </div>
       </a>
     {% endif %}

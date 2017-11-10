@@ -15,12 +15,29 @@
 
 @include landscape {
 	.homeHero {
-		display: grid;
-		grid-template-columns: auto 160px;
-		grid-column-gap: 40px;
-		vertical-align: top;
+		// display: grid;
+		// grid-template-columns: auto 160px;
+		// grid-column-gap: 40px;
+		// vertical-align: top;
 		margin: 120px auto 80px auto;
 		padding: 0 60px;
+		&:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.card {
+			float: right;
+			width: 150px;
+		}
+		.headline {
+			width: 100%;
+			float: left;
+			margin-right: -230px;
+			div {
+				margin-right: 200px;
+			}
+		}
 		.headline .button {
 			display: inline-flex;
 		}
@@ -28,6 +45,22 @@
 			max-width: 100%;
 			margin: 0;
 			margin-top: -10px;
+			transition: 0.3s;
+			svg {
+				top: 10px;
+				right: 10px;
+				width: 18px;
+			}
+			&:hover {
+				.video {
+					svg g {
+						fill: #fe9e81;
+					}
+					// button {
+					// 	color: #fe9e81;
+					// }
+				}
+			}
 			.video {
 				text-align: center;
 				video {
@@ -40,14 +73,16 @@
 					border-radius: 0;
 					left: 0;
 					bottom: 0;
-					margin-top: 20px;
 					display: inline;
 					text-align: center;
 					text-decoration: none;
 					-webkit-appearance: none;
-					span {
-						padding-left: 0;
-					}
+					font-family: "sanfran";
+					letter-spacing: -0.7px;
+					font-size: 17px;
+					line-height: 24px;
+					margin-top: 10px;
+					color: rgba(146, 167, 189, 0.7);
 				}
 			}
 		}
@@ -56,10 +91,13 @@
 
 @include desktop {
 	.homeHero {
-		display: grid;
-		grid-template-columns: auto 180px;
-		grid-column-gap: 50px;
-		vertical-align: top;
+		.headline {
+		}
+
+		// display: grid;
+		// grid-template-columns: auto 180px;
+		// grid-column-gap: 50px;
+		// vertical-align: top;
 		margin: 150px auto 110px auto;
 		padding: 0 70px;
 	}

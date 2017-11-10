@@ -41,16 +41,17 @@
 
   <a class="card" id="{{project.slug}}" href="/{{project.uri}}">
 
-    {% if block.video | length %}
+    {# {% if block.video | length %}
       <div class="video">
+
         {% for block in block.video %}
           <video muted playsinline loop poster="{{block.placeholderImage.first().url}}" autoplay>
             <source src="{{block.video.first().url}}" type="video/mp4">
           </video>
         {% endfor %}
-        <button><span class="extraSmallText">About Leah</span>{{ craft.inlin.er('/media/icons/finger-white.svg') | raw }}</button>
+        <button><span class="extraSmallText">About Leah</span></button>
       </div>
-    {% endif %}
+    {% endif %} #}
 
     {% if block.specificImages | length %}
       <div class="image background">
@@ -68,18 +69,11 @@
           {% endif %}
         </div> #}
         {% for image in block.specificImages %}
+        {# {{ picture.transform(image.portrait,{width: 290, height: 330}) }} 1x, #}
           <picture>
-              <source class="lazyload" media="(min-width: 670px)" data-srcset="
-                {{ image.desktop.first().url }} 1x">
-              {# <source class="lazyload" media="(min-width: 415px)" data-srcset="
-                {{ picture.transform(image,{width: 1024})}} 1x,
-                {{ picture.transform(image,{width: 2048}) }} 2x"> #}
-              <source class="lazyload" data-srcset="
-                {# {{ picture.transform(image.portrait,{width: 290, height: 330}) }} 1x, #}
-                {{ image.portrait.first().url }} 2x">
-              <img
-                data-srcset="http://placehold.it/640x480&text=default-1x"
-                class="lazyload">
+              <source media="(min-width: 670px)" data-srcset="{{ image.desktop.first().url }} 1x" srcset="{{ image.desktop.first().url }} 1x">
+              <source data-srcset="{{ image.portrait.first().url }} 2x" srcset="{{ image.portrait.first().url }} 2x">
+              <img src="{{ image.desktop.first().url }}" class="lazyload">
           </picture>
         {% endfor %}
       </div>

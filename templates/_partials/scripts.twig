@@ -1,49 +1,6 @@
-{# <script src="/js/anime.js"></script> #}
-{# <script src="https://unpkg.com/vue"></script> #}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.1/lazysizes.min.js"></script>
 
-{# <script src="/src/js/page-accelerator.min.js"></script>
-<script type="text/javascript">
-  pageAccelerator();
-</script> #}
-
-
-
-<script src="/src/js/zepto.min.js"></script>
-<script src="/src/js/zepto.data.js"></script>
-<script src="/src/js/lazysizes.min.js" async=""></script>
-{# <script src="/src/js/intercooler-1.1.2.min.js"></script> #}
-{# <script src="/src/js/turbolinks.js"></script> #}
-
-
-
-
-{# <script src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.3.0/picturefill.min.js" async=""></script> #}
-
-
-
-
-
-{# <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script> #}
-
-{# <script src="/src/js/flowtype.js" async=""></script> #}
-{# <script type="text/javascript" src="/src/js/zepto.touch.js"></script> #}
-{# <script type="text/javascript" src="/src/js/vanilla-tilt.js"></script> #}
-{# <script type="text/javascript" src="/src/js/jquery.lazy.js"></script> #}
-{# <script type="text/javascript" src="/src/js/clipboard.js"></script> #}
-{# <script src="/src/js/ls.respimg.min.js" async=""></script> #}
-
-{# <script src="/src/js/anime.js" async=""></script> #}
-
-
-
-
-
-{# <script src="/src/js/photoswipe.min.js" async=""></script>
-<script src="/src/js/photoswipe-ui-default.min.js" async=""></script> #}
-
-{# <script src="/src/js/zepto.cookie.min.js" async=""></script> #}
-
-{# <script type="text/javascript" src="/src/js/picturefill.js" async></script> #}
 
 
 {% if entry.type.handle == "project" %}
@@ -54,7 +11,23 @@
     {{ craft.inlin.er('/src/js/project.js') | raw }}
   </script>
   <!-- project scripts -->
-{% else %}
+{% elseif entry.slug == "homepage" %}
+{# <script>
+new Clipboard('.email');
+</script> #}
+<script>
+  var clipboard = new Clipboard('.email');
+
+  clipboard.on('success', function(e) {
+      e.trigger.innerHTML = "Email Copied";
+      e.clearSelection();
+  });
+
+  clipboard.on('error', function(e) {
+      console.error('Action:', e.action);
+      console.error('Trigger:', e.trigger);
+  });
+</script>
   <!-- home scripts -->
   {# <script type="text/javascript" src="/src/js/site.js"></script> #}
   <!-- home scripts -->

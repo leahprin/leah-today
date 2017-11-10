@@ -46,6 +46,13 @@
 }
 
 .card .video {
+	svg {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		width: 25px;
+		display: inline-block;
+	}
 	button {
 		position: absolute;
 		bottom: 20px;
@@ -55,6 +62,7 @@
 		height: 32px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 		color: #fff;
+		padding: 0 14px;
 
 		svg {
 			width: 18px;
