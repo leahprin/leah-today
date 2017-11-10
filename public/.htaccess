@@ -28,11 +28,14 @@
   AddOutputFilterByType DEFLATE application/rss+xml
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
 ## EXPIRES CACHING ##
 <IfModule mod_expires.c>
 ExpiresActive On
+ExpiresByType video/mp4 "access plus 1 month"
+ExpiresByType image/svg "access 1 month"
 ExpiresByType image/jpg "access plus 1 year"
 ExpiresByType image/jpeg "access plus 1 year"
 ExpiresByType image/gif "access plus 1 year"
