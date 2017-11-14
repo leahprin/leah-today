@@ -20,6 +20,7 @@
     "animejs": "^2.2.0",
     "browser-sync": "^2.18.13",
     "browserify": "^14.4.0",
+    "emergence.js": "^1.1.2",
     "flowtype-js": "^0.1.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",

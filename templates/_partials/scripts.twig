@@ -1,7 +1,6 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+{# <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script> #}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.1/lazysizes.min.js"></script>
-
-
+<script src="/src/js/emergence.min.js"></script>
 
 {% if entry.type.handle == "project" %}
 
@@ -18,20 +17,22 @@ new Clipboard('.email');
 </script> #}
 <script>
 
-document.getElementById('email').onclick = function(e){
-    e.preventDefault();
-}
+  emergence.init();
 
-  var clipboard = new Clipboard('.email');
-  clipboard.on('success', function(e) {
-      e.trigger.innerHTML = "Email Copied";
-      e.clearSelection();
-  });
+  // document.getElementById('email').onclick = function(e){
+  //     e.preventDefault();
+  // }
 
-  clipboard.on('error', function(e) {
-      console.error('Action:', e.action);
-      console.error('Trigger:', e.trigger);
-  });
+  // var clipboard = new Clipboard('.email');
+  // clipboard.on('success', function(e) {
+  //     e.trigger.innerHTML = "Email Copied";
+  //     e.clearSelection();
+  // });
+  //
+  // clipboard.on('error', function(e) {
+  //     console.error('Action:', e.action);
+  //     console.error('Trigger:', e.trigger);
+  // });
 </script>
   <!-- home scripts -->
   {# <script type="text/javascript" src="/src/js/site.js"></script> #}

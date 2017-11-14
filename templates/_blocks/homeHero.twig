@@ -14,7 +14,8 @@
     <div class="headline">
       <div class="hideMobile" style="display: none;">{{block.headlineDesktop}}</div>
       <div class="hideDesktop">{{block.headlineMobile}}</div>
-      <a class="button email" href="mailto:hello@leah.today" id="email" data-clipboard-text="hello@leah.today">{{ craft.inlin.er('/media/icons/envelope.svg') | raw }} Email Leah</a>
+      {# data-clipboard-text="hello@leah.today" #}
+      <a class="button email" href="mailto:hello@leah.today" id="email">{{ craft.inlin.er('/media/icons/envelope.svg') | raw }} Email Leah</a>
     </div>
 
     {% if block.video | length %}
