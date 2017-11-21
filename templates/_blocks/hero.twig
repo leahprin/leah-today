@@ -24,9 +24,7 @@
         <figure>
           <img
             src="{{image.url}}"
-            data-zoom-target="{{image.url}}"
             alt="HD zoom on thumb image"
-            {% if image.noZoom == 1 %}{% else %}data-action="zoom"{% endif %}
           >
           {% if image.paragraph is defined %}<figcaption>{{image.paragraph}}</figcaption>{% endif %}
         </figure>
